@@ -1,7 +1,6 @@
 body{
     background-color: grey;
 }
-
 #drawBox{
     display: flex;
     flex-wrap: wrap;
@@ -10,19 +9,15 @@ body{
     border: 6px solid black ;
     overflow: auto;
 }
-
 main{
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
-
 .center{
     display: flex;
     flex-direction: column;
 }
-
 .bottom{
     align-self: center;
     display: flex;
