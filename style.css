@@ -7,5 +7,24 @@ body{
     flex-wrap: wrap;
     width: 800px;
     height: 800px;
-    border: 1px solid black ;
+    border: 6px solid black ;
+    overflow: auto;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom{
+    align-self: center;
+    display: flex;
+    flex-direction: row;
 }
