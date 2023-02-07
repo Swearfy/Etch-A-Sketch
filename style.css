@@ -1,14 +1,6 @@
 body{
     background-color: grey;
 }
-#drawBox{
-    display: flex;
-    flex-wrap: wrap;
-    width: 800px;
-    height: 800px;
-    border: 6px solid black ;
-    overflow: auto;
-}
 main{
     display: flex;
     flex-direction: row;
@@ -18,8 +10,14 @@ main{
     display: flex;
     flex-direction: column;
 }
-.bottom{
+#bottom{
     align-self: center;
     display: flex;
     flex-direction: row;
+}
+
+.slider::-moz-range-thumb{
+    width: 15px;
+    height: 15px;
+    background-color: red;
 }

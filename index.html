@@ -8,13 +8,25 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main>
-      <div class="center">
-        <div id="drawBox"></div>
-        <div class="bottom">
+    <main id="main">
+      <div class="center" id="center">
+        <!-- <div id="drawBox"></div> -->
+        <div id="bottom">
           <div><button>Test</button></div>
           <div><button>Start</button></div>
           <div><button id="reset">Reset</button></div>
+          <div class="slider">
+            <input
+              autocomplete="off"
+              id="idk"
+              type="range"
+              min="0"
+              max="100"
+              value="16"
+              oninput="rangeValue.innerText = this.value"
+            />
+            <p id="rangeValue">16</p>
+          </div>
         </div>
       </div>
     </main>

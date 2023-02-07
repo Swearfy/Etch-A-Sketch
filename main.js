@@ -1,9 +1,22 @@
 const body = document.body;
-const drawBox = document.getElementById("drawBox");
+const center = document.getElementById("center");
 const reset = document.getElementById("reset");
-
+const slider = document.getElementById("idk");
+const bottom = document.getElementById("bottom");
 function box(size) {
-  let x = 800 / size;
+  const drawBox = document.createElement("div");
+  drawBox.id = "drawBox";
+  drawBox.style.display = "flex";
+  drawBox.style.flexWrap = "wrap";
+  drawBox.style.width = "600px";
+  drawBox.style.height = "600px";
+  drawBox.style.border = "6px solid black";
+  drawBox.style.overflow = "auto";
+
+  center.insertBefore(drawBox, bottom);
+
+  let x = 600 / size;
+
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
       const div = document.createElement("div");
@@ -20,7 +33,10 @@ function box(size) {
   }
 }
 
-box(5);
+function clearBox() {
+  const box = document.getElementById("drawBox");
+  box.remove();
+}
 
 reset.addEventListener("click", () => {
   let x = drawBox.getElementsByTagName("div");
@@ -28,3 +44,10 @@ reset.addEventListener("click", () => {
     x[i].style.backgroundColor = "white";
   }
 });
+
+slider.addEventListener("input", (e) => {
+  box(e.target.value);
+  clearBox();
+});
+
+box(16);
