@@ -53,7 +53,6 @@ function drawHold(drawBox) {
   for (let i = 0; i < x.length; i++) {
     x[i].addEventListener("mouseover", () => {
       x[i].style.backgroundColor = "black";
-      console.log("cock");
     });
   }
 }
