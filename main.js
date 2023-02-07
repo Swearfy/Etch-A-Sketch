@@ -3,8 +3,10 @@ const center = document.getElementById("center");
 const reset = document.getElementById("reset");
 const slider = document.getElementById("idk");
 const bottom = document.getElementById("bottom");
+
 function box(size) {
   const drawBox = document.createElement("div");
+
   drawBox.id = "drawBox";
   drawBox.style.display = "flex";
   drawBox.style.flexWrap = "wrap";
@@ -12,6 +14,9 @@ function box(size) {
   drawBox.style.height = "600px";
   drawBox.style.border = "6px solid black";
   drawBox.style.overflow = "auto";
+  drawBox.ondragstart = () => {
+    return false;
+  };
 
   center.insertBefore(drawBox, bottom);
 
@@ -25,29 +30,53 @@ function box(size) {
       div.style.backgroundColor = "white";
       div.style.margin = "0";
       div.style.padding = "0";
-      div.addEventListener("mouseover", () => {
-        div.style.backgroundColor = "black";
-      });
+
       drawBox.append(div);
     }
+  }
+
+  draw(drawBox);
+  drawHold(drawBox);
+}
+
+function draw(drawBox) {
+  const x = drawBox.getElementsByTagName("div");
+  for (let i = 0; i < x.length; i++) {
+    x[i].addEventListener("mousedown", (e) => {
+      x[i].style.backgroundColor = "black";
+    });
+  }
+}
+
+function drawHold(drawBox) {
+  const x = drawBox.getElementsByTagName("div");
+  for (let i = 0; i < x.length; i++) {
+    x[i].addEventListener("mouseover", () => {
+      x[i].style.backgroundColor = "black";
+      console.log("cock");
+    });
   }
 }
 
 function clearBox() {
-  const box = document.getElementById("drawBox");
-  box.remove();
+  const drawBox = document.getElementById("drawBox");
+  const cell = drawBox.getElementsByTagName("div");
+  for (let i = 0; i < cell.length; i++) {
+    cell[i].style.backgroundColor = "white";
+    cell[i].ondragstart = "return false";
+  }
 }
 
-reset.addEventListener("click", () => {
-  let x = drawBox.getElementsByTagName("div");
-  for (let i = 0; i < x.length; i++) {
-    x[i].style.backgroundColor = "white";
-  }
-});
+function removeCanvas() {
+  const drawBox = document.getElementById("drawBox");
+  drawBox.remove();
+}
+
+reset.addEventListener("click", () => clearBox());
 
 slider.addEventListener("input", (e) => {
   box(e.target.value);
-  clearBox();
+  removeCanvas();
 });
 
 box(16);
